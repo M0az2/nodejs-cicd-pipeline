@@ -6,6 +6,14 @@ app.get('/', (req, res) => {
   res.json({ message: 'Hello from CI/CD Pipeline!', status: 'ok' });
 });
 
+app.get('/health', (req, res) => {
+  res.json({
+    status: 'healthy',
+    uptime: process.uptime(),
+    timestamp: new Date().toISOString()
+  });
+});
+
 const server = app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
