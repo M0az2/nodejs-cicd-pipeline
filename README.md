@@ -1,4 +1,4 @@
-# Node.js CI/CD Pipeline 🚀
+# Node.js CI/CD Pipeline 
 
 ![CI/CD Pipeline](https://github.com/M0az2/nodejs-cicd-pipeline/actions/workflows/ci.yml/badge.svg)
 
