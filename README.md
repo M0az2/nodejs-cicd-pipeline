@@ -6,10 +6,12 @@
 [![Express](https://img.shields.io/badge/Express.js-Framework-000000?logo=express\&logoColor=white)](https://expressjs.com/)
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15-4169E1?logo=postgresql\&logoColor=white)](https://www.postgresql.org/)
 [![Docker](https://img.shields.io/badge/Docker-Containerized-2496ED?logo=docker\&logoColor=white)](https://www.docker.com/)
+[![Docker%20Compose](https://img.shields.io/badge/Docker%20Compose-Multi--Container-2496ED?logo=docker\&logoColor=white)](https://docs.docker.com/compose/)
 [![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-CI%2FCD-2088FF?logo=githubactions\&logoColor=white)](https://github.com/features/actions)
 [![Jest](https://img.shields.io/badge/Jest-Testing-C21325?logo=jest\&logoColor=white)](https://jestjs.io/)
+[![Docker Hub](https://img.shields.io/badge/Docker_Hub-Image_Registry-2496ED?logo=docker\&logoColor=white)](https://hub.docker.com/)
 
-> A containerized Node.js backend with PostgreSQL, automated testing, Docker image delivery, and a GitHub Actions CI/CD pipeline.
+> A containerized Node.js backend application with PostgreSQL, automated testing, Docker image delivery, and a GitHub Actions CI/CD pipeline.
 
 ---
 
@@ -17,97 +19,177 @@
 
 This project demonstrates a complete **CI/CD workflow for a Node.js backend application**.
 
-The application is containerized using Docker and connected to PostgreSQL through Docker Compose. GitHub Actions automates the testing and Docker image delivery process whenever changes are pushed to the `main` branch.
+The application is built with **Node.js and Express.js**, connected to **PostgreSQL**, and containerized using **Docker and Docker Compose**.
 
-The project also includes a lightweight **application dashboard** that displays the current application status, database connectivity, uptime, API endpoints, and technology stack.
+The project includes automated testing with **Jest** and a **GitHub Actions CI/CD pipeline** that automates testing, Docker image building, and image delivery.
+
+It also provides a lightweight web-based monitoring interface with dedicated dashboards for:
+
+* 🏠 System Overview
+* ❤️ Application Health
+* 🗄️ Database Dashboard
+
+The project focuses on practical **Backend Development, Containerization, Automated Testing, and DevOps CI/CD practices**.
 
 ---
 
 ## ✨ Features
 
-| Feature                  | Description                                 |
-| ------------------------ | ------------------------------------------- |
-| 🟢 Application Dashboard | Displays application and system status      |
-| 🗄️ PostgreSQL           | Database integration using PostgreSQL       |
-| 🐳 Docker                | Containerized application environment       |
-| 🔗 Docker Compose        | Runs application and database together      |
-| 🧪 Automated Testing     | Jest tests executed through CI              |
-| ⚙️ CI/CD                 | Automated workflow using GitHub Actions     |
-| 📦 Docker Build          | Automatically builds the application image  |
-| 🚀 Image Delivery        | Publishes Docker images to Docker Hub       |
-| ❤️ Health Check          | Application health monitoring endpoint      |
-| 🔐 Environment Config    | Configuration through environment variables |
+| Feature                  | Description                                    |
+| ------------------------ | ---------------------------------------------- |
+| 🏠 System Overview       | High-level application and system status       |
+| ❤️ Application Health    | Application health and runtime information     |
+| 🗄️ Database Dashboard   | PostgreSQL connection and database information |
+| 🟢 Health Check          | Application health monitoring endpoint         |
+| 🐘 PostgreSQL            | Relational database integration                |
+| 🐳 Docker                | Containerized application environment          |
+| 🔗 Docker Compose        | Multi-container application environment        |
+| 🧪 Jest                  | Automated application testing                  |
+| ⚙️ GitHub Actions        | CI/CD automation                               |
+| 📦 Docker Build          | Automated Docker image creation                |
+| 🚀 Docker Hub            | Container image delivery                       |
+| 🔐 Environment Variables | Externalized application configuration         |
+| 📊 Web Dashboard         | Visual application monitoring interface        |
 
 ---
 
-## 🏗️ Architecture
+# 🏗️ Architecture
 
 ```text
-                         GitHub Repository
-                                │
-                                │ Push
-                                ▼
-                       ┌─────────────────┐
-                       │ GitHub Actions  │
-                       └────────┬────────┘
-                                │
-                         ┌──────┴──────┐
-                         │             │
-                       Tests       Docker Build
-                         │             │
-                         └──────┬──────┘
-                                │
-                                ▼
-                         Docker Registry
-                                │
-                                │
-                    ┌───────────▼───────────┐
-                    │    Docker Compose     │
-                    │                       │
-                    │  ┌─────────────────┐  │
-                    │  │   Node.js App   │  │
-                    │  │    Express.js   │  │
-                    │  └────────┬────────┘  │
-                    │           │           │
-                    │           ▼           │
-                    │  ┌─────────────────┐  │
-                    │  │   PostgreSQL    │  │
-                    │  └─────────────────┘  │
-                    └───────────────────────┘
+                         👨‍💻 Developer
+                              │
+                              │ Git Push
+                              ▼
+                     ┌──────────────────┐
+                     │   GitHub Repo    │
+                     └────────┬─────────┘
+                              │
+                              ▼
+                     ┌──────────────────┐
+                     │ GitHub Actions   │
+                     │      CI/CD       │
+                     └────────┬─────────┘
+                              │
+                    ┌─────────┴─────────┐
+                    │                   │
+                    ▼                   ▼
+              🧪 Run Tests        🐳 Docker Build
+                    │                   │
+                    └─────────┬─────────┘
+                              │
+                              ▼
+                     📦 Docker Hub
+                              │
+                              ▼
+                 ┌─────────────────────────┐
+                 │     Docker Compose      │
+                 │                         │
+                 │  ┌───────────────────┐  │
+                 │  │   Node.js App     │  │
+                 │  │     Express       │  │
+                 │  │     Port 3000     │  │
+                 │  └─────────┬─────────┘  │
+                 │            │            │
+                 │            ▼            │
+                 │  ┌───────────────────┐  │
+                 │  │    PostgreSQL     │  │
+                 │  │     Port 5432     │  │
+                 │  └───────────────────┘  │
+                 │                         │
+                 └─────────────────────────┘
 ```
 
 ---
 
-## 🖥️ Application Dashboard
+# 🖥️ Application Dashboards
 
-The root endpoint provides a simple web dashboard for viewing the current application state.
+The project provides a web-based interface for monitoring and inspecting the running application.
+
+The dashboard is divided into three main views:
+
+* 🏠 System Overview
+* ❤️ Application Health
+* 🗄️ Database Dashboard
+
+---
+
+## 🏠 System Overview
+
+The System Overview dashboard provides a high-level view of the application's current state.
 
 It displays:
 
 * 🟢 Application status
-* 🗄️ PostgreSQL connectivity
+* 🐘 PostgreSQL connection status
 * ⏱️ Application uptime
 * 🐳 Docker environment
 * 🔌 Available API endpoints
 * 🧰 Technology stack
 
-Run the application and open:
+### 📸 Dashboard Preview
 
-```text
-http://localhost:3000
-```
+![System Overview](screenshots/System%20Overview.png)
 
 ---
 
-## 🔌 API Endpoints
+## ❤️ Application Health
+
+The Application Health dashboard provides detailed information about the application's runtime and health status.
+
+It includes:
+
+* 🟢 Application status
+* ⚙️ Service status
+* ⏱️ Application uptime
+* 🟢 Health check result
+* 🟢 Runtime information
+* 🟢 Node.js version
+* 🐳 Execution environment
+* 🕐 Health check timestamp
+
+### 📸 Dashboard Preview
+
+![Application Health](screenshots/Application%20Health.png)
+
+---
+
+## 🗄️ Database Dashboard
+
+The Database Dashboard provides detailed information about the PostgreSQL database connection.
+
+It includes:
+
+* 🟢 Connection status
+* 🐘 Database engine
+* 🗄️ Database name
+* 🌐 Database host
+* 🕐 PostgreSQL server time
+* 🔌 Connection test result
+* ⚠️ Error information when the database is unavailable
+
+### 📸 Dashboard Preview
+
+![Database Dashboard](screenshots/Database%20Dashboard.png)
+
+---
+
+# 🔌 API Endpoints
+
+The application exposes REST API endpoints that can be used by monitoring tools, scripts, or other services.
 
 | Method | Endpoint  | Description                       |
 | :----: | --------- | --------------------------------- |
-|  `GET` | `/`       | 🖥️ Application dashboard         |
+|  `GET` | `/`       | 🏠 Main application dashboard     |
 |  `GET` | `/health` | ❤️ Application health check       |
 |  `GET` | `/db`     | 🗄️ PostgreSQL connectivity check |
 
-### ❤️ Health Check
+---
+
+## ❤️ Health Check API
+
+The `/health` endpoint returns the current application health information.
+
+Example response:
 
 ```json
 {
@@ -117,7 +199,21 @@ http://localhost:3000
 }
 ```
 
-### 🗄️ Database Check
+This endpoint can be integrated with:
+
+* 🐳 Docker health checks
+* ⚙️ CI/CD systems
+* 📊 Monitoring systems
+* 🔄 Load balancers
+* ☸️ Kubernetes probes
+
+---
+
+## 🗄️ Database Check API
+
+The `/db` endpoint verifies the PostgreSQL connection.
+
+Example response:
 
 ```json
 {
@@ -127,87 +223,107 @@ http://localhost:3000
 }
 ```
 
----
-
-## 🧰 Technology Stack
-
-<div align="center">
-
-| Technology        | Purpose                     |
-| ----------------- | --------------------------- |
-| 🟢 Node.js        | Backend runtime             |
-| ⚡ Express.js      | Web framework               |
-| 🐘 PostgreSQL     | Relational database         |
-| 🐳 Docker         | Containerization            |
-| 🔗 Docker Compose | Multi-container environment |
-| ⚙️ GitHub Actions | CI/CD automation            |
-| 🧪 Jest           | Automated testing           |
-| 📦 Docker Hub     | Container image registry    |
-
-</div>
+If the database connection fails, the API returns an error response describing the failure.
 
 ---
 
-## 🔄 CI/CD Workflow
+# 🧰 Technology Stack
 
-Every push to the `main` branch triggers the automated pipeline.
+| Technology            | Purpose                      |
+| --------------------- | ---------------------------- |
+| 🟢 **Node.js**        | Backend runtime              |
+| ⚡ **Express.js**      | Web framework                |
+| 🐘 **PostgreSQL**     | Relational database          |
+| 🐳 **Docker**         | Application containerization |
+| 🔗 **Docker Compose** | Multi-container environment  |
+| ⚙️ **GitHub Actions** | CI/CD automation             |
+| 🧪 **Jest**           | Automated testing            |
+| 📦 **Docker Hub**     | Container image registry     |
+| 🔧 **Git**            | Version control              |
+
+---
+
+# 🔄 CI/CD Workflow
+
+Every push to the `main` branch triggers the automated GitHub Actions workflow.
 
 ```text
-          👨‍💻 Developer
-                │
-                ▼
-          📤 Git Push
-                │
-                ▼
-      ⚙️ GitHub Actions
-                │
-        ┌───────┴────────┐
-        ▼                ▼
-    🧪 Run Tests     🐳 Build Image
-        │                │
-        └───────┬────────┘
-                ▼
-        📦 Push to Docker Hub
+                👨‍💻 Developer
+                     │
+                     ▼
+                📤 Git Push
+                     │
+                     ▼
+             ⚙️ GitHub Actions
+                     │
+             ┌───────┴────────┐
+             │                │
+             ▼                ▼
+        🧪 Run Tests      🐳 Build Image
+             │                │
+             └───────┬────────┘
+                     │
+                     ▼
+             📦 Docker Hub
+                     │
+                     ▼
+               🚀 Image Ready
 ```
 
 ### Pipeline Steps
 
-1. 🧪 Install dependencies and run tests
-2. 🐳 Build Docker image
-3. 📦 Push image to Docker Hub
-4. ✅ Report pipeline status
+1. 📥 Checkout the repository
+2. 🟢 Install Node.js dependencies
+3. 🧪 Run automated Jest tests
+4. 🐳 Build the Docker image
+5. 🔐 Authenticate with Docker Hub
+6. 📦 Push the Docker image
+7. ✅ Report the workflow status
+
+This automation reduces manual deployment steps and provides an automated validation process for application changes.
 
 ---
 
-## 🐳 Docker Compose
+# 🐳 Docker Compose
 
-The application runs as a multi-container environment:
+The application uses Docker Compose to run the Node.js application and PostgreSQL database together.
 
 ```text
-┌───────────────────────────────────────┐
-│           Docker Compose              │
-│                                       │
-│   ┌──────────────┐  ┌──────────────┐ │
-│   │   Node.js    │  │  PostgreSQL  │ │
-│   │     App      │──│   Database   │ │
-│   │   Port 3000  │  │   Port 5432  │ │
-│   └──────────────┘  └──────────────┘ │
-│                                       │
-└───────────────────────────────────────┘
+┌──────────────────────────────────────────┐
+│             🐳 Docker Compose             │
+│                                          │
+│   ┌────────────────┐  ┌───────────────┐  │
+│   │   Node.js App  │  │  PostgreSQL   │  │
+│   │                │  │               │  │
+│   │  Express.js    │──│   Database    │  │
+│   │   Port 3000    │  │   Port 5432   │  │
+│   └────────────────┘  └───────────────┘  │
+│                                          │
+└──────────────────────────────────────────┘
+```
+
+The application communicates with PostgreSQL through the Docker Compose network.
+
+The database host is configured using:
+
+```env
+DB_HOST=db
 ```
 
 ---
 
-## 🚀 Getting Started
+# 🚀 Getting Started
 
-### 1. Clone the project
+## 1️⃣ Clone the Repository
 
 ```bash
 git clone https://github.com/M0az2/nodejs-cicd-pipeline.git
 cd nodejs-cicd-pipeline
 ```
 
-### 2. Configure environment variables
+---
+
+## 2️⃣ Configure Environment Variables
 
 Create a `.env` file:
 
@@ -221,37 +337,98 @@ DB_NAME=nodeapp
 
 > ⚠️ The `.env` file is excluded from Git using `.gitignore`.
 
-A template is available in:
+A safe configuration template is available in:
 
 ```text
 .env.example
 ```
 
-### 3. Start the application
+---
+
+## 3️⃣ Start the Application
+
+Build and start the containers:
 
 ```bash
 docker compose up -d --build
 ```
 
-### 4. Check containers
+---
+
+## 4️⃣ Check Running Containers
 
 ```bash
 docker compose ps
 ```
 
-### 5. Open the dashboard
+Expected services:
+
+```text
+app
+db
+```
+
+---
+
+## 5️⃣ Open the Application
+
+Open:
 
 ```text
 http://localhost:3000
 ```
 
-### 6. View logs
+---
+
+## 6️⃣ Access the Dashboards
+
+### 🏠 System Overview
+
+```text
+http://localhost:3000
+```
+
+### ❤️ Application Health
+
+```text
+http://localhost:3000/health-dashboard
+```
+
+### 🗄️ Database Dashboard
+
+```text
+http://localhost:3000/database-dashboard
+```
+
+### 🔌 Health API
+
+```text
+http://localhost:3000/health
+```
+
+### 🗄️ Database API
+
+```text
+http://localhost:3000/db
+```
+
+---
+
+## 7️⃣ View Application Logs
 
 ```bash
 docker compose logs app
 ```
 
-### 7. Stop the application
+Follow logs in real time:
+
+```bash
+docker compose logs -f app
+```
+
+---
+
+## 8️⃣ Stop the Application
 
 ```bash
 docker compose down
@@ -259,7 +436,7 @@ docker compose down
 
 ---
 
-## 🧪 Running Tests
+# 🧪 Running Tests
 
 Install dependencies:
 
@@ -267,68 +444,139 @@ Install dependencies:
 npm install
 ```
 
-Run tests:
+Run the automated test suite:
 
 ```bash
 npm test
 ```
 
-Tests can also be executed automatically through GitHub Actions.
+The project uses **Jest** and **Supertest** for automated API testing.
+
+Example:
+
+```text
+PASS  ./test.js
+
+✓ should return application dashboard
+✓ should return healthy status
+
+Test Suites: 1 passed
+Tests:       2 passed
+```
+
+Tests are also executed automatically through GitHub Actions.
 
 ---
 
-## 📁 Project Structure
+# 📁 Project Structure
 
 ```text
 nodejs-cicd-pipeline/
 │
-├── .github/
-│   └── workflows/
-│       └── ci.yml
+├── 📁 .github/
+│   └── 📁 workflows/
+│       └── ⚙️ ci.yml
 │
-├── .env.example
-├── .gitignore
-├── Dockerfile
-├── docker-compose.yml
-├── index.js
-├── package.json
-├── package-lock.json
-├── test.js
-├── Makefile
-└── README.md
+├── 📁 screenshots/
+│   ├── 🖼️ System Overview.png
+│   ├── 🖼️ Application Health.png
+│   └── 🖼️ Database Dashboard.png
+│
+├── 📄 .env.example
+├── 📄 .gitignore
+├── 🐳 Dockerfile
+├── 🐳 docker-compose.yml
+├── 🟢 index.js
+├── 📦 package.json
+├── 📦 package-lock.json
+├── 🧪 test.js
+├── 🔧 Makefile
+└── 📖 README.md
 ```
 
 ---
 
-## 🔐 Environment & Security
+# 🔐 Environment & Security
 
 The application uses environment variables for database configuration.
 
 Sensitive configuration is stored locally in `.env` and excluded from version control.
 
 ```text
-.env          → Local secrets/configuration
-.env.example  → Safe configuration template
+.env
+   ↓
+Local configuration / secrets
+
+.env.example
+   ↓
+Safe configuration template
 ```
+
+The repository does **not** contain the local `.env` file.
 
 ---
 
-## 📊 Project Goals
+# 📊 Project Goals
 
-This project focuses on practical DevOps and backend concepts:
+This project focuses on practical **Backend and DevOps engineering concepts**:
 
 * 🔄 CI/CD automation
 * 🐳 Containerization
 * 🧪 Automated testing
 * 🗄️ Database integration
-* ⚙️ Infrastructure-independent application configuration
+* ⚙️ Environment-based configuration
 * 📦 Container image management
 * ❤️ Application health monitoring
+* 📊 Application dashboards
 * 🔧 Reproducible development environments
+* 🚀 Automated application delivery
 
 ---
 
-## 👨‍💻 Author
+# 🎯 DevOps Concepts Demonstrated
+
+The project demonstrates a practical workflow from development to container delivery:
+
+```text
+        👨‍💻 Development
+              │
+              ▼
+          📝 Git Commit
+              │
+              ▼
+         📤 Git Push
+              │
+              ▼
+       ⚙️ CI/CD Pipeline
+              │
+       ┌──────┴──────┐
+       ▼             ▼
+    🧪 Tests     🐳 Build
+       │             │
+       └──────┬──────┘
+              ▼
+        📦 Docker Hub
+              │
+              ▼
+        🚀 Deployable
+          Container
+```
+
+---
+
+# 📸 Screenshots
+
+The repository contains screenshots demonstrating the running application:
+
+| Screenshot                   | Description                              |
+| ---------------------------- | ---------------------------------------- |
+| 🏠 `System Overview.png`     | Main application overview dashboard      |
+| ❤️ `Application Health.png`  | Application health and runtime dashboard |
+| 🗄️ `Database Dashboard.png` | PostgreSQL database dashboard            |
+
+---
+
+# 👨‍💻 Author
 
 **Moaz Nasr**
 
